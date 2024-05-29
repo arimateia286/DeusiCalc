@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="main.css">
+  <script type="text/javascript" src="app.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <title>DeusiCalc</title>
+</head>
+
+<body onload="inicio()">
+  <div class="navBar" align="center" onclick="mostrarSobre();">
+    <p class="logo">DEUSICALC</p>
+  </div>
+  <div align="center">
+    <div class="linhaBotoes">
+      <button id="botaoBandeira" class="botaoPreto">Visa e Mastercard</button>
+      <button id="botaoForma" class="botaoPreto">Débito</button>
+    </div>
+    <div class="linhaBotoes">
+      <button id="botaoTipoTaxa" class="botaoPreto" style="width: 90%;">Cliente com a taxa</button>
+    </div>
+    <div class="linhaBotoes">
+      <button id="visor" class="visor" style="width: 69%;"></button>
+      <button id="botaoLimpar" class="visor" style="width: 20%; background-color: #000; color: #f00">C</button>
+    </div>
+    <div id="divDigitos"></div>
+  </div>
+  <dialog id="telaResultados" class="telaPopup"></dialog>
+  <dialog id="telaParcelamento" class="telaPopup"></dialog>
+  <dialog id="telaSobre" class="telaPopup">
+    <div class="botaoPopup">DEUSICALC</div>
+    <div class="textoPopup" style="border-top: solid #000 1px;" align="center">Te amo, neném♥</div>
+    <div align="center"><img id="imgSheIs" class="sheIs" src="sheIs/0.png"></div>
+  </dialog>
+</body>
+
+</html>
