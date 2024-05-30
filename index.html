@@ -11,25 +11,32 @@
 </head>
 
 <body onload="inicio()">
-  <div class="navBar" align="center" onclick="mostrarSobre();">
+  <div class="navBar" align="center" onclick="mostrarSobre()">
     <p class="logo">DEUSICALC</p>
   </div>
-  <div align="center">
+  <div class="container" align="center">
     <div class="linhaBotoes">
       <button id="botaoBandeira" class="botaoPreto">Visa e Mastercard</button>
       <button id="botaoForma" class="botaoPreto">Débito</button>
     </div>
     <div class="linhaBotoes">
-      <button id="botaoTipoTaxa" class="botaoPreto" style="width: 90%;">Cliente com a taxa</button>
+      <button id="botaoTipoTaxa" class="botaoPreto">Cliente com a taxa</button>
     </div>
     <div class="linhaBotoes">
-      <button id="visor" class="visor" style="width: 69%;"></button>
-      <button id="botaoLimpar" class="visor" style="width: 20%; background-color: #000; color: #f00">C</button>
+      <button id="visor"></button>
+      <button id="botaoLimpar">C</button>
     </div>
     <div id="divDigitos"></div>
   </div>
   <dialog id="telaResultados" class="telaPopup"></dialog>
-  <dialog id="telaParcelamento" class="telaPopup"></dialog>
+  <dialog id="telaParcelamento" class="telaPopup">
+    <div class="botaoPopup" style='border: none'>Parcelameto</div>
+    <div id="botaoParcelamento" class="textoPopup" style="border-bottom: none; border-top: solid 1px #000; text-align: center;"></div>
+    <div align="center" style="border-bottom: solid 1px #000; background-color: #fff;">
+      <input id="slider" type="range" min="0" max="12" value="0">
+    </div>
+    <div id="botaoParcelamentoOk" class="botaoPopup">Ok</div>
+  </dialog>
   <dialog id="telaSobre" class="telaPopup">
     <div class="botaoPopup">DEUSICALC</div>
     <div class="textoPopup" style="border-top: solid #000 1px;" align="center">Te amo, neném♥</div>

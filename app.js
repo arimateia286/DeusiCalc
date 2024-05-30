@@ -39,11 +39,18 @@ function inicio() {
 
     telaParcelamento = document.getElementById("telaParcelamento")
 
-    let telaParcelamentoTemp = "<div class='botaoPopup'>Parcelameto</div>"
-    for (let i = 0; i < FORMAS.length; i++) {
-        telaParcelamentoTemp += "<div class='textoPopup' onclick='parcelaAoClicar(" + i + ");'>" + FORMAS[i] + "</div>"
+    botaoParcelamento = document.getElementById("botaoParcelamento")
+
+    slider = document.getElementById("slider")
+    slider.oninput = () => {
+        botaoParcelamento.innerHTML = FORMAS[slider.value]
     }
-    telaParcelamento.innerHTML = telaParcelamentoTemp
+    botaoParcelamento.innerHTML = FORMAS[slider.value]
+
+    botaoParcelamentoOk = document.getElementById("botaoParcelamentoOk")
+    botaoParcelamentoOk.onclick = () => {
+        parcelaAoClicar(slider.value)
+    }
 
     telaResultados = document.getElementById("telaResultados")
 
@@ -56,10 +63,10 @@ function inicio() {
             if (DIGITOS[i] == "=") {
                 resultados = calcular(botaoBandeira.indice, botaoForma.indice, botaoTipoTaxa.indice, valor)
                 telaResultados.innerHTML = "<div class='botaoPopup'>Concluído" +
-                    "</div><div class='textoPopup'>Taxa de: R$" + resultados[1] + " (" + resultados[6] + "%)" +
+                    "</div><div class='textoPopup' style='border-top: solid 1px #000'>Taxa de: R$" + resultados[1] + " (" + resultados[6] + "%)" +
                     "</div><div class='textoPopup'>Cliente paga: R$" + resultados[2] +
                     "</div><div class='textoPopup'>Parcelado em " + resultados[3] + "x de R$" + resultados[4] +
-                    "</div><div class='textoPopup' style='border-style: none'>Total a receber: R$" + resultados[5] +
+                    "</div><div class='textoPopup' style='border-bottom: solid 1px #000'>Total a receber: R$" + resultados[5] +
                     "</div><div class='botaoPopup' onclick='botaoOkAoClicar();'>Ok</div>"
                 telaResultados.showModal()
             } else {
