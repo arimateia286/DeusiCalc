@@ -39,17 +39,18 @@ function inicio() {
 
     telaParcelamento = document.getElementById("telaParcelamento")
 
-    botaoParcelamento = document.getElementById("botaoParcelamento")
+    listaParcelamento = document.getElementById("listaParcelamento")
 
-    slider = document.getElementById("slider")
-    slider.oninput = () => {
-        botaoParcelamento.innerHTML = FORMAS[slider.value]
+    let listaParcelametoTemp = ""
+    for (let i = 0; i < FORMAS.length; i++) {
+        if (i == 0) listaParcelametoTemp += "<div class='textoPopup'  style='border-top: solid 1px #000' onclick='parcelaAoClicar(" + i + ")'>" + FORMAS[i] + "</div>"
+        else listaParcelametoTemp += "<div class='textoPopup' onclick='parcelaAoClicar(" + i + ")'>" + FORMAS[i] + "</div>"
     }
-    botaoParcelamento.innerHTML = FORMAS[slider.value]
+    listaParcelamento.innerHTML = listaParcelametoTemp
 
     botaoParcelamentoOk = document.getElementById("botaoParcelamentoOk")
     botaoParcelamentoOk.onclick = () => {
-        parcelaAoClicar(slider.value)
+        telaParcelamento.close()
     }
 
     telaResultados = document.getElementById("telaResultados")
@@ -101,20 +102,8 @@ function botaoOkAoClicar() {
     telaResultados.close()
 }
 
-function botaoSwitch(idBotao, opcoes) {
-    this.botao = document.getElementById(idBotao)
-    this.opcoes = opcoes
-    this.indice = 0
-
-    this.botao.onclick = () => {
-        if (this.indice < this.opcoes.length - 1) this.indice++
-        else this.indice = 0
-        this.atualizar()
-    }
-
-    this.atualizar = () => {
-        this.botao.innerHTML = this.opcoes[this.indice]
-    }
+function miau() {
+    alert("Miau, krl")
 }
 
 function calcular(bandeira, parcelamento_, tipoTaxa, valor) {
@@ -146,4 +135,20 @@ function calcular(bandeira, parcelamento_, tipoTaxa, valor) {
     }
 
     return resultados
+}
+
+function botaoSwitch(idBotao, opcoes) {
+    this.botao = document.getElementById(idBotao)
+    this.opcoes = opcoes
+    this.indice = 0
+
+    this.botao.onclick = () => {
+        if (this.indice < this.opcoes.length - 1) this.indice++
+        else this.indice = 0
+        this.atualizar()
+    }
+
+    this.atualizar = () => {
+        this.botao.innerHTML = this.opcoes[this.indice]
+    }
 }
