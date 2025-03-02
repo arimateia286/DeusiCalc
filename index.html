@@ -16,20 +16,16 @@
 </head>
 
 <body onload="inicio()">
-  <div class="navBar" align="center" onclick="mostrarSobre()">
-    <p class="logo">DEUSICALC</p>
-  </div>
-  <div class="container" align="center">
-    <div class="linhaBotoes">
-      <button id="botaoBandeira" class="botaoPreto">Visa e Mastercard</button>
-      <button id="botaoForma" class="botaoPreto">Débito</button>
+  <p class="logo" onclick="mostrarSobre()">DEUSICALC</p>
+  <div class="container">
+    <div class="linhaBotoes" style="height: 8vh;">
+      <button id="botaoBandeira" class="botaoPreto" style="width: 50%;">Visa e Mastercard</button>
+      <button id="botaoForma" class="botaoPreto" style="width: 50%;">Débito</button>
     </div>
-    <div class="linhaBotoes">
-      <button id="botaoTipoTaxa" class="botaoPreto">Cliente com a taxa</button>
-    </div>
-    <div class="linhaBotoes">
-      <button id="visor"></button>
-      <button id="botaoLimpar">C</button>
+    <button id="botaoTipoTaxa" class="botaoPreto" style="width: 100%; height: 8vh;">Cliente com a taxa</button>
+    <div class="linhaBotoes" style="height: 10vh;">
+      <button id="visor" class="botaoPreto visor"></button>
+      <button id="botaoLimpar" class="botaoPreto botaoLimpar">C</button>
     </div>
     <div id="divDigitos"></div>
   </div>
@@ -43,6 +39,9 @@
     <div class="botaoPopup">DEUSICALC</div>
     <div class="textoPopup" style="border-top: solid #000 1px;" align="center">Te amo, neném❤️</div>
     <div align="center"><img id="imgSheIs" class="sheIs" src="sheIs/0.png" onclick="miau()"></div>
+    <div id="botaoTamanhoFonte" class="textoPopup" style="border-top: solid #000 1px;" align="center"></div>
+    <div id="statusConexao" class="textoPopup" align="center"></div>
+    <div id="botaoSobreOk" class="botaoPopup">Ok</div>
   </dialog>
 </body>
 

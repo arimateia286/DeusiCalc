@@ -9,14 +9,50 @@ const FORMATADOR = new Intl.NumberFormat('pt-BR', {
     minimumFractionDigits: 2,
 })
 
+const data = new Date()
+
+if (localStorage.getItem("tamanhoFonte") == null) {
+    localStorage.setItem("tamanhoFonte", 1)
+}
+
+const tamanhosFonte = [["12pt", "20pt"], ["10pt", "18pt"]]
+let tamanhoFonteAtual = localStorage.getItem("tamanhoFonte")
+
+if (localStorage.getItem("temaAtual") == null) {
+    localStorage.setItem("temaAtual", 0)
+}
+
+const temas = ["#01ff5f", "#00a5ff", "#ffa100", "#fdadff"]
+let temaAtual = localStorage.getItem("temaAtual")
+
 let taxas, valor = "0.00"
 
 function inicio() {
-    (async () => {
-        const taxasTemp = await axios.get("https://raw.githubusercontent.com/arimateia286/DeusiCalc/main/taxas.js")
-        taxas = taxasTemp.data
-    })()
-
+    mudarFonte()
+    let r = document.querySelector(":root")
+    r.style.setProperty("--corFundo", temas[temaAtual])
+    
+    if (navigator.onLine) {
+        (async () => {
+            const taxasTemp = await axios.get("https://raw.githubusercontent.com/arimateia286/DeusiCalc/main/taxas.js")
+            taxas = taxasTemp.data
+            localStorage.setItem("taxasLocal", JSON.stringify(taxas))
+            localStorage.setItem("dataTaxas", JSON.stringify(
+                data.getDate() + "/" + (data.getMonth() + 1) + "/" + data.getFullYear() +
+                " às " + data.getHours() + ":" + data.getMinutes() + ":" + data.getSeconds()
+            ))
+        })()
+        taxas = JSON.parse(localStorage.getItem("taxasLocal"))
+    } else {
+        if (localStorage.getItem("taxasLocal") != null) {
+            alert("Você está offline!\nTaxas baixadas em " + JSON.parse(localStorage.getItem("dataTaxas")))
+            taxas = JSON.parse(localStorage.getItem("taxasLocal"))
+        }
+        else {
+            alert("Você não tem a tabela de taxas baixada!\nConecte-se a internet para baixar a tabela mais recente e usar o aplicativo!")
+        }
+    }
+    
     botaoBandeira = new botaoSwitch("botaoBandeira", BANDEIRAS)
     botaoForma = new botaoSwitch("botaoForma", FORMAS)
     botaoForma.botao.onclick = () => {
@@ -58,17 +94,17 @@ function inicio() {
     divDigitos = document.getElementById("divDigitos")
     for (let i = 0; i < DIGITOS.length; i++) {
         let botao = document.createElement("button")
-        botao.className = "botaoDigito"
+        botao.className = "botaoPreto botaoDigito"
         botao.innerHTML = DIGITOS[i]
         botao.onclick = () => {
             if (DIGITOS[i] == "=") {
                 resultados = calcular(botaoBandeira.indice, botaoForma.indice, botaoTipoTaxa.indice, valor)
-                telaResultados.innerHTML = "<div class='botaoPopup'>Concluído" +
-                    "</div><div class='textoPopup' style='border-top: solid 1px #000'>Taxa de: R$" + resultados[1] + " (" + resultados[6] + "%)" +
-                    "</div><div class='textoPopup'>Cliente paga: R$" + resultados[2] +
-                    "</div><div class='textoPopup'>Parcelado em " + resultados[3] + "x de R$" + resultados[4] +
-                    "</div><div class='textoPopup' style='border-bottom: solid 1px #000'>Total a receber: R$" + resultados[5] +
-                    "</div><div class='botaoPopup' onclick='botaoOkAoClicar();'>Ok</div>"
+                telaResultados.innerHTML = `<div class='botaoPopup'>Concluído</div>
+                <div class='textoPopup' style='border-top: solid 1px #000'>Taxa de: R$${resultados[1]} (${resultados[6]}%)</div>
+                <div class='textoPopup'>Cliente paga: R$${resultados[2]}</div>
+                <div class='textoPopup'>Parcelado em ${resultados[3]}x de R$${resultados[4]}</div>
+                <div class='textoPopup' style='border-bottom: solid 1px #000'>Total a receber: R$${resultados[5]}</div>
+                <div class='botaoPopup' onclick='botaoOkAoClicar();'>Ok</div>`
                 telaResultados.showModal()
             } else {
                 if (valor == "0.00") valor = ""
@@ -80,9 +116,29 @@ function inicio() {
     }
 
     telaSobre = document.getElementById("telaSobre")
-    telaSobre.onclick = () => {
+    
+    botaoSobreOk = document.getElementById("botaoSobreOk")
+    botaoSobreOk.onclick = () => {
         telaSobre.close()
     }
+    
+    botaoTamanhoFonte = document.getElementById("botaoTamanhoFonte")
+    botaoTamanhoFonte.onclick = () => {
+        if (tamanhoFonteAtual < 1) tamanhoFonteAtual++
+        else tamanhoFonteAtual = 0
+        localStorage.setItem("tamanhoFonte", tamanhoFonteAtual)
+        mudarFonte()
+    }
+    
+    statusConexao = document.getElementById("statusConexao")
+    statusConexao.innerHTML = (navigator.onLine) ? "Online" : "Offline (" + JSON.parse(localStorage.getItem("dataTaxas")) + ")"
+}
+
+function mudarFonte() {
+    let r = document.querySelector(":root")
+    r.style.setProperty("--tamanhoFonteTexto", tamanhosFonte[0][tamanhoFonteAtual])
+    r.style.setProperty("--tamanhoFonteBotao", tamanhosFonte[1][tamanhoFonteAtual])
+    botaoTamanhoFonte.innerHTML = (tamanhoFonteAtual == 0) ? "Tamanho da fonte: Pequena" : "Tamanho da fonte: Grande"
 }
 
 function mostrarSobre() {
@@ -103,7 +159,12 @@ function botaoOkAoClicar() {
 }
 
 function miau() {
-    alert("Miau, krl")
+    alert("She diz: 'Miau, krl, vou mudar esse tema!'")
+    if (temaAtual < temas.length - 1) temaAtual++
+    else temaAtual = 0
+    localStorage.setItem("temaAtual", temaAtual)
+    let r = document.querySelector(":root")
+    r.style.setProperty("--corFundo", temas[temaAtual])
 }
 
 function calcular(bandeira, parcelamento_, tipoTaxa, valor) {

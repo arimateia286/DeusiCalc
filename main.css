@@ -3,23 +3,36 @@
   src: url('BebasNeue.otf') format('opentype');
 }
 
+:root {
+  --tamanhoFonteTexto: 20pt;
+  --tamanhoFonteBotao: 18pt;
+  --corFundo: #01ff5f;
+}
+
 body {
-  background-color: #01ff5f;
+  font-family: "BebasNeue";
+  background-color: var(--corFundo);
   margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
 }
 
 .telaPopup {
-  background-color: #01ff5f;
-  min-width: 75%;
+  background-color: var(--corFundo);
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
   border-style: none;
   border-radius: 8px;
+  min-width: 75%;
   padding: 0;
+  overflow: hidden;
 }
 
 .textoPopup {
   font-family: 'BebasNeue';
-  font-size: 20pt;
+  font-size: var(--tamanhoFonteTexto);
   border-bottom: 1px solid #000;
   background-color: #fff;
   padding: 0 2vw 0 2vw;
@@ -29,34 +42,78 @@ body {
 
 .botaoPopup {
   font-family: 'BebasNeue';
-  font-size: 18pt;
+  font-size: var(--tamanhoFonteBotao);
   padding: 0 2vw 0 2vw;
   align-content: center;
   text-align: center;
   height: 8vh;
 }
 
-#slider {
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: #00D84F;
-  width: 75%;
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.125);
+  border-bottom: 1px solid black;
+  width: 100%;
+  height: 8vh;
+  font-size: 1.5em;
 }
 
-#slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 8vw;
-  height: 8vw;
-  background: #000;
-  cursor: pointer;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 92.5vw;
+  margin: auto;
+  gap: 8px;
 }
 
-#slider::-moz-range-thumb {
-  width: 8vw;
-  height: 8vw;
-  background: #000;
-  cursor: pointer;
+.linhaBotoes {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 8px;
+}
+
+.botaoPreto {
+  font-family: "BebasNeue";
+  background: black;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1em;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.botaoDigito {
+  font-size: 2.5em;
+}
+
+.visor {
+  background: white;
+  color: black;
+  width: 70%;
+  font-size: 2.5em;
+}
+
+.botaoLimpar {
+  color: red;
+  width: 30%;
+  font-size: 2.5em;
+}
+
+.sheIs {
+  width: 50%;
+}
+
+#divDigitos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 100%;
 }
 
 ::backdrop {
@@ -64,93 +121,28 @@ body {
   opacity: 0.5;
 }
 
-.navBar {
-  display: flex;
-  overflow: hidden;
-  width: 100%;
-  height: 8vh;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid #000;
-  background-color: #00D84F;
+@media (max-width: 767px) {
+  .botaoDigito {
+    aspect-ratio: 1;
+  }
 }
 
-.logo {
-  margin: auto;
-  color: #000;
-  font-size: 20pt;
-  font-family: 'BebasNeue';
-}
+@media (min-width: 768px) {
+  .container {
+    width: 40vw;
+    height: 100vh;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  }
 
-.container {
-  width: 95%;
-  margin: auto;
-}
+  .botaoDigito {
+    height: 14vh;
+  }
 
-.linhaBotoes {
-  display: flex;
-  flex-wrap: nowrap;
-}
+  .telaPopup {
+    min-width: 30vw;
+  }
 
-.botaoPreto {
-  flex: 1 1 50%;
-  height: 8vh;
-  margin: 1vw;
-  background-color: #000;
-  border-style: none;
-  border-radius: 8px;
-  color: #fff;
-  font-size: 12pt;
-  font-family: 'BebasNeue';
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-}
-
-#botaoTipoTaxa {
-  margin: 1vw;
-}
-
-#visor {
-  flex: 1 1 70%;
-  height: 10vh;
-  margin: 1vw;
-  background-color: #fff;
-  color: #000;
-  border-style: none;
-  border-radius: 8px;
-  font-size: 32pt;
-  font-family: 'BebasNeue';
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-}
-
-#botaoLimpar {
-  flex: 1 1 30%;
-  margin: 1vw;
-  background-color: #000;
-  color: #f00;
-  border-style: none;
-  border-radius: 8px;
-  font-size: 32pt;
-  font-family: 'BebasNeue';
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-}
-
-#divDigitos {
-  display: grid;
-  grid-template-columns: auto auto auto;
-}
-
-.botaoDigito {
-  background-color: #000;
-  border-style: none;
-  border-radius: 8px;
-  margin: 1vw;
-  height: 14vh;
-  color: #fff;
-  font-size: 32pt;
-  font-family: 'BebasNeue';
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-}
-
-.sheIs {
-  height: 50vw;
+  .textoPopup {
+    height: 5.5vh;
+  }
 }
