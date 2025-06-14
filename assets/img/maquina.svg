@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <rect style="stroke: rgb(0, 0, 0); fill: none; stroke-width: 32px;" x="78.149" y="20.203" width="343.702" height="458.932" rx="32" ry="32">
+    <title>Corpo</title>
+  </rect>
+  <rect style="stroke: rgb(0, 0, 0); fill: none; stroke-width: 32px;" x="125.28" y="63.845" width="249.441" height="147.298" rx="16" ry="16">
+    <title>Tela</title>
+  </rect>
+  <g transform="matrix(1, 0, 0, 1, 0, 9)">
+    <rect x="125.28" y="245.309" width="47.981" height="35.674" rx="10" ry="10" style="stroke: rgb(0, 0, 0); stroke-width: 32px;"/>
+    <rect x="125.28" y="389.4" width="47.981" height="35.674" rx="10" ry="10" style="stroke: rgb(0, 0, 0); stroke-width: 32;"/>
+    <rect x="125.28" y="317.424" width="47.981" height="35.674" rx="10" ry="10" style="stroke: rgb(0, 0, 0); stroke-width: 32;"/>
+    <rect x="326.74" y="245.309" width="47.981" height="35.674" rx="10" ry="10" style="stroke: rgb(0, 0, 0); stroke-width: 32;"/>
+    <rect x="326.74" y="389.4" width="47.981" height="35.674" rx="10" ry="10" style="stroke: rgb(0, 0, 0); stroke-width: 32;"/>
+    <rect x="326.74" y="317.424" width="47.981" height="35.674" rx="10" ry="10" style="stroke: rgb(0, 0, 0); stroke-width: 32;"/>
+    <rect x="226.009" y="245.309" width="47.981" height="35.674" rx="10" ry="10" style="stroke: rgb(0, 0, 0); stroke-width: 32;"/>
+    <rect x="226.009" y="389.4" width="47.981" height="35.674" rx="10" ry="10" style="stroke: rgb(0, 0, 0); stroke-width: 32;"/>
+    <rect x="226.009" y="317.424" width="47.981" height="35.674" rx="10" ry="10" style="stroke: rgb(0, 0, 0); stroke-width: 32;"/>
+  </g>
+</svg>

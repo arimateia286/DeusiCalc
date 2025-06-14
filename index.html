@@ -10,13 +10,17 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
   <link rel="manifest" href="assets/img/favicons/site.webmanifest">
   <link rel="stylesheet" href="main.css">
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="app.js"></script>
   <title>DeusiCalc</title>
 </head>
 
-<body onload="inicio()">
-  <p class="logo" onclick="mostrarSobre()">DEUSICALC</p>
+<body>
+  <div class="headerContainer">
+    <div class="header">
+      <img class="botaoHeader" src="assets/img/gear-solid.svg" onclick="mostrarSobre()">
+      DEUSICALC
+      <img class="botaoHeader" src="assets/img/maquina.svg"  onclick="mostrarSelecaoMaquina()">
+    </div>
+  </div>
   <div class="container">
     <div class="linhaBotoes" style="height: 8vh;">
       <button id="botaoBandeira" class="botaoPreto" style="width: 50%;">Visa e Mastercard</button>
@@ -29,20 +33,36 @@
     </div>
     <div id="divDigitos"></div>
   </div>
+  <dialog id="telaSelecaoMaquina" class="telaPopup">
+    <div class="botaoPopup">MÁQUINA</div>
+    <div class="textoPopup centralizado">Selecione a máquina que deseja utilizar</div>
+    <div class="containerMaquinas">
+      <div id="maquinaPagBank">
+        <img src="assets/img/pagbank.png">
+        <p>PagBank</p>
+      </div>
+      <div id="maquinaTon">
+        <img src="assets/img/ton.png">
+        <p>Ton</p>
+      </div>
+    </div>
+  </dialog>
   <dialog id="telaResultados" class="telaPopup"></dialog>
   <dialog id="telaParcelamento" class="telaPopup">
-    <div class="botaoPopup" style="border: none">Parcelameto</div>
+    <div class="botaoPopup">Parcelameto</div>
     <div id="listaParcelamento"></div>
     <div id="botaoParcelamentoOk" class="botaoPopup">Ok</div>
   </dialog>
   <dialog id="telaSobre" class="telaPopup">
     <div class="botaoPopup">DEUSICALC</div>
-    <div class="textoPopup" style="border-top: solid #000 1px;" align="center">Te amo, neném❤️</div>
-    <div align="center"><img id="imgSheIs" class="sheIs" src="sheIs/0.png" onclick="miau()"></div>
-    <div id="botaoTamanhoFonte" class="textoPopup" style="border-top: solid #000 1px;" align="center"></div>
-    <div id="statusConexao" class="textoPopup" align="center"></div>
+    <div class="textoPopup centralizado">Te amo, neném❤️</div>
+    <div class="centralizado"><img id="imgSheIs" class="sheIs" src="sheIs/0.png" onclick="miau()"></div>
+    <div id="statusConexao" class="textoPopup centralizado"></div>
     <div id="botaoSobreOk" class="botaoPopup">Ok</div>
   </dialog>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="app.js"></script>
 </body>
 
 </html>
