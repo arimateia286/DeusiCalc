@@ -2,67 +2,70 @@
 <html lang="pt-BR">
 
 <head>
-  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <link rel="icon" type="image/x-icon" href="assets/img/favicons/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
-  <link rel="manifest" href="assets/img/favicons/site.webmanifest">
-  <link rel="stylesheet" href="main.css">
-  <title>DeusiCalc</title>
+	<meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="icon" type="image/x-icon" href="assets/img/favicons/favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
+	<link rel="manifest" href="assets/img/favicons/site.webmanifest">
+	<link rel="stylesheet" href="main.css">
+	<title>DeusiCalc</title>
 </head>
 
 <body>
-  <div class="headerContainer">
-    <div class="header">
-      <img class="botaoHeader" src="assets/img/gear-outline.svg" onclick="mostrarSobre()">
-      DEUSICALC
-      <img class="botaoHeader" src="assets/img/maquina.svg"  onclick="mostrarSelecaoMaquina()">
-    </div>
-  </div>
-  <div class="container">
-    <div class="linhaBotoes" style="height: 8vh;">
-      <button id="botaoBandeira" class="botaoPreto" style="width: 50%;">Visa e Mastercard</button>
-      <button id="botaoForma" class="botaoPreto" style="width: 50%;">Débito</button>
-    </div>
-    <button id="botaoTipoTaxa" class="botaoPreto" style="width: 100%; height: 8vh;">Cliente com a taxa</button>
-    <div class="linhaBotoes" style="height: 10vh;">
-      <button id="visor" class="botaoPreto visor"></button>
-      <button id="botaoLimpar" class="botaoPreto botaoLimpar">C</button>
-    </div>
-    <div id="divDigitos"></div>
-  </div>
-  <dialog id="telaSelecaoMaquina" class="telaPopup">
-    <div class="botaoPopup">MÁQUINA</div>
-    <div class="textoPopup centralizado">Selecione a máquina que deseja utilizar</div>
-    <div class="containerMaquinas">
-      <div id="maquinaPagBank">
-        <img src="assets/img/pagbank.png">
-        <p>PagBank</p>
-      </div>
-      <div id="maquinaTon">
-        <img src="assets/img/ton.png">
-        <p>Ton</p>
-      </div>
-    </div>
-  </dialog>
-  <dialog id="telaResultados" class="telaPopup"></dialog>
-  <dialog id="telaParcelamento" class="telaPopup">
-    <div class="botaoPopup">Parcelameto</div>
-    <div id="listaParcelamento"></div>
-    <div id="botaoParcelamentoOk" class="botaoPopup">Ok</div>
-  </dialog>
-  <dialog id="telaSobre" class="telaPopup">
-    <div class="botaoPopup">DEUSICALC</div>
-    <div class="textoPopup centralizado">Te amo, neném❤️</div>
-    <div class="centralizado"><img id="imgSheIs" class="sheIs" src="sheIs/0.png" onclick="miau()"></div>
-    <div id="statusConexao" class="textoPopup centralizado"></div>
-    <div id="botaoSobreOk" class="botaoPopup">Ok</div>
-  </dialog>
+	<div class="mainContainer">
+		<div class="headerContainer">
+			<div class="header">
+				<img class="botaoHeader" src="assets/img/gear-outline.svg" onclick="mostrarSobre()">
+				DEUSICALC
+				<img class="botaoHeader" src="assets/img/maquina.svg" onclick="mostrarSelecaoMaquina()">
+			</div>
+		</div>
+		<div class="widthContainer">
+			<div class="linhaBotoes" style="height: 8vh;">
+				<button id="botaoBandeira" class="botaoPreto" style="width: 50%;">Visa e Master</button>
+				<button id="botaoForma" class="botaoPreto" style="width: 50%;">Débito</button>
+			</div>
+			<button id="botaoTipoTaxa" class="botaoPreto" style="width: 100%; height: 8vh;">Cliente com a taxa</button>
+			<div class="linhaBotoes" style="height: 10vh;">
+				<button id="visor" class="botaoPreto visor"></button>
+				<button id="botaoLimpar" class="botaoPreto botaoLimpar">C</button>
+			</div>
+			<div id="divDigitos"></div>
+		</div>
+	</div>
 
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="app.js"></script>
+	<dialog id="telaSelecaoMaquina" class="telaPopup">
+		<div class="botaoPopup">MÁQUINA</div>
+		<div class="textoPopup centralizado">Selecione a máquina que deseja utilizar</div>
+		<div class="containerMaquinas">
+			<div id="maquinaPagBank">
+				<img src="assets/img/pagbank.png">
+				<p>PagBank</p>
+			</div>
+			<div id="maquinaTon">
+				<img src="assets/img/ton.png">
+				<p>Ton</p>
+			</div>
+		</div>
+	</dialog>
+	<dialog id="telaResultados" class="telaPopup"></dialog>
+	<dialog id="telaParcelamento" class="telaPopup">
+		<div class="botaoPopup">Parcelameto</div>
+		<div id="listaParcelamento"></div>
+		<div id="botaoParcelamentoOk" class="botaoPopup">Ok</div>
+	</dialog>
+	<dialog id="telaSobre" class="telaPopup">
+		<div class="botaoPopup">DEUSICALC</div>
+		<div class="textoPopup centralizado">Te amo, neném❤️</div>
+		<div class="centralizado"><img id="imgSheIs" class="sheIs" src="sheIs/0.png" onclick="miau()"></div>
+		<div id="statusConexao" class="textoPopup centralizado"></div>
+		<div id="botaoSobreOk" class="botaoPopup">Ok</div>
+	</dialog>
+
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="app.js"></script>
 </body>
 
 </html>
