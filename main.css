@@ -1,230 +1,237 @@
 @font-face {
-	font-family: 'BebasNeue';
-	src: url('BebasNeue.otf') format('opentype');
+    font-family: 'BebasNeue';
+    src: url('BebasNeue.otf') format('opentype');
 }
 
 :root {
-	--tamanhoFonteTexto: 40px;
-	--tamanhoFonteBotao: 40px;
+    --tamanhoFonteTexto: 40px;
+    --tamanhoFonteBotao: 40px;
 }
 
 body {
-	font-family: "BebasNeue";
-	margin: 0;
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+    font-family: "BebasNeue";
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .temaTon {
-	background-color: #01ff5f;
+    background-color: #01ff5f;
 }
 
 .temaPagBank {
-	background-color: #ffb900;
+    background-color: #ffb900;
 }
 
 .telaPopup {
-	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-	border-style: none;
-	border-radius: 8px;
-	min-width: 75%;
-	padding: 0;
-	overflow: auto;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    border-style: none;
+    border-radius: 8px;
+    min-width: 75%;
+    padding: 0;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .textoPopup {
-	font-family: 'BebasNeue';
-	font-size: var(--tamanhoFonteTexto);
-	border-bottom: 1px solid black;
-	border-top: 1px solid black;
-	background-color: white;
-	padding: 0.5rem;
-	align-content: center;
+    font-family: 'BebasNeue';
+    font-size: var(--tamanhoFonteTexto);
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    background-color: white;
+    padding: 0.5rem;
+    align-content: center;
 }
 
 .centralizado {
-	text-align: center;
+    text-align: center;
 }
 
 .botaoPopup {
-	font-family: 'BebasNeue';
-	font-size: var(--tamanhoFonteBotao);
-	padding: 0.5rem 0;
-	align-content: center;
-	text-align: center;
+    font-family: 'BebasNeue';
+    font-size: var(--tamanhoFonteBotao);
+    padding: 0.5rem 0;
+    align-content: center;
+    text-align: center;
 }
 
 .titulo {
-	border-bottom: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 .headerContainer,
 .header {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 8vh;
 }
 
 .headerContainer {
-	background: rgba(0, 0, 0, 0.25);
-	border-bottom: 1px solid black;
+    background: rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid black;
 }
 
 .header {
-	justify-content: space-between;
-	font-size: 2em;
-	width: 92.5%;
+    justify-content: space-between;
+    font-size: 2em;
+    width: 92.5%;
 }
 
 .botaoHeader {
-	height: 50%;
+    height: 50%;
 }
 
 .mainContainer {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .widthContainer {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	width: 92.5%;
-	height: calc(100% - 8vh);
-	margin: auto;
-	gap: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 92.5%;
+    height: calc(100% - 8vh);
+    margin: auto;
+    gap: 8px;
 }
 
 .containerMaquinas {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-evenly;
-	margin: 1rem;
-	gap: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 1rem;
+    gap: 8px;
 }
 
 .containerMaquinas>div {
-	width: 40%;
-	background-color: rgba(0, 0, 0, 0.125);
-	border-radius: 8px;
-	padding: 1rem;
+    width: 40%;
+    background-color: rgba(0, 0, 0, 0.125);
+    border-radius: 8px;
+    padding: 1rem;
 }
 
 .containerMaquinas>div>img {
-	width: 100%;
+    width: 100%;
 }
 
 .containerMaquinas>div>p {
-	text-align: center;
-	font-size: var(--tamanhoFonteTexto);
-	margin: 0;
+    text-align: center;
+    font-size: var(--tamanhoFonteTexto);
+    margin: 0;
 }
 
 .linhaBotoes {
-	display: flex;
-	flex-direction: row;
-	width: 100%;
-	gap: 8px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 8px;
 }
 
 .botaoPreto {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-family: "BebasNeue";
-	background: black;
-	border: none;
-	border-radius: 8px;
-	color: white;
-	font-size: 32px;
-	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-	text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "BebasNeue";
+    background: black;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 32px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    text-overflow: ellipsis;
 }
 
 .botaoDigito {
-	font-size: 64px;
+    font-size: 64px;
+    aspect-ratio: 1;
 }
 
 .visor {
-	background: white;
-	color: black;
-	width: 70%;
-	font-size: 64px;
+    background: white;
+    color: black;
+    width: 70%;
+    font-size: 64px;
 }
 
 .resultadoGrande {
-	font-size: 52px;
+    font-size: 52px;
 }
 
 .botaoLimpar {
-	color: red;
-	width: 30%;
-	font-size: 64px;
+    color: red;
+    width: 30%;
+    font-size: 64px;
 }
 
 .sheIs {
-	width: 50%;
+    width: 50%;
 }
 
 #divDigitos {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 8px;
-	width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    width: 100%;
 }
 
 ::backdrop {
-	background-color: #000;
-	opacity: 0.5;
-}
-
-@media (max-width: 767px) {
-	.botaoDigito {
-		aspect-ratio: 1;
-	}
+    background-color: #000;
+    opacity: 0.5;
 }
 
 @media (min-width: 768px) {
-	:root {
-		--tamanhoFonteTexto: 32px;
-		--tamanhoFonteBotao: 32px;
-	}
+    :root {
+        --tamanhoFonteTexto: 24px;
+        --tamanhoFonteBotao: 24px;
+    }
 
-	body {
-		background: linear-gradient(to right, #01ff5f, #ffb900);
-	}
+    body {
+        background: linear-gradient(to right, #01ff5f, #ffb900);
+    }
 
-	.containerMaquinas>div {
-		width: 30%;
-	}
+    .resultadoGrande {
+        font-size: 40px;
+    }
 
-	.botaoDigito {
-		font-size: 48px;
-		aspect-ratio: 1.3;
-	}
+    .botaoPreto {
+        font-size: 22px;
+    }
 
-	.mainContainer {
-		width: 28%;
-		height: 99%;
-		box-shadow: -10px 18px 45px 6px rgba(0, 0, 0, 0.5);
-		-webkit-box-shadow: -10px 18px 45px 6px rgba(0, 0, 0, 0.5);
-		-moz-box-shadow: -10px 18px 45px 6px rgba(0, 0, 0, 0.5);
-		border-radius: 8px;
-		border: 1px solid black;
-	}
+    .botaoDigito {
+        font-size: 48px;
+        aspect-ratio: 1;
+    }
 
-	.header {
-		border-radius: 8px 8px 0 0;
-	}
+    .visor,
+    .botaoLimpar {
+        font-size: 48px;
+    }
 
-	.telaPopup {
-		min-width: 30vw;
-	}
+    .mainContainer {
+        height: 100vh;
+        width: 45vh;
+        box-shadow: -10px 18px 45px 6px rgba(0, 0, 0, 0.5);
+        -webkit-box-shadow: -10px 18px 45px 6px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: -10px 18px 45px 6px rgba(0, 0, 0, 0.5);
+        border-radius: 8px;
+        scale: 0.99;
+    }
+
+    .header {
+        border-radius: 8px 8px 0 0;
+    }
+
+    .telaPopup {
+        min-width: 40vh;
+        max-width: 40vh;
+    }
 }
