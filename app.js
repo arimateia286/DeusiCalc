@@ -1,5 +1,5 @@
-const BANDEIRAS = ["Visa e Master", "Elo e demais"];
-const FORMAS = ["Débito", "Crédito em 1x", "Crédito em 2x", "Crédito em 3x", "Crédito em 4x", "Crédito em 5x", "Crédito em 6x", "Crédito em 7x", "Crédito em 8x", "Crédito em 9x", "Crédito em 10x", "Crédito em 11x", "Crédito em 12x"];
+const BANDEIRAS = ["Visa e<br>Master", "Elo e<br>demais"];
+const FORMAS = ["Débito", "Crédito 1x", "Crédito 2x", "Crédito 3x", "Crédito 4x", "Crédito 5x", "Crédito 6x", "Crédito 7x", "Crédito 8x", "Crédito 9x", "Crédito 10x", "Crédito 11x", "Crédito 12x"];
 const TIPOSTAXA = ["Cliente paga a taxa", "Vendedor paga a taxa"];
 const DIGITOS = "123456789.0=";
 
@@ -16,6 +16,8 @@ let todasTaxas, taxas, valor = "0.00";
 const telaAviso = document.getElementById("telaAviso");
 const avisosDiv = document.getElementById("avisosDiv");
 
+const telaSelecaoMaquina = document.getElementById("telaSelecaoMaquina");
+
 if (navigator.onLine) {
     (async () => {
         const taxasTemp = await axios.get("https://raw.githubusercontent.com/arimateia286/DeusiCalc/main/taxas.json");
@@ -28,9 +30,11 @@ if (navigator.onLine) {
         localStorage.setItem("dataTaxas", JSON.stringify(dataFormatada));
     })();
     todasTaxas = JSON.parse(localStorage.getItem("taxasLocal"));
+    telaSelecaoMaquina.showModal();
 } else {
     if (localStorage.getItem("taxasLocal") != null) {
         avisosDiv.innerHTML = "<div class='textoPopup'>Você está offline, mas as taxas foram baixadas em " + JSON.parse(localStorage.getItem("dataTaxas")) + "</div>";
+        telaSelecaoMaquina.showModal();
         telaAviso.showModal();
         todasTaxas = JSON.parse(localStorage.getItem("taxasLocal"));
     }
@@ -40,16 +44,16 @@ if (navigator.onLine) {
     }
 }
 
-let maquinaAtual = "Ton";
+const mainContainer = document.getElementById("mainContainer");
 
-const telaSelecaoMaquina = document.getElementById("telaSelecaoMaquina");
-telaSelecaoMaquina.showModal();
+let maquinaAtual = "Ton";
 
 const botaoMaquinaPagBank = document.getElementById("maquinaPagBank");
 botaoMaquinaPagBank.addEventListener("click", () => {
     maquinaAtual = "PagBank";
     taxas = todasTaxas[maquinaAtual];
     telaSelecaoMaquina.close();
+    mainContainer.className = "mainContainer";
     mudarEstilo();
 });
 
@@ -58,6 +62,7 @@ botaoMaquinaTon.addEventListener("click", () => {
     maquinaAtual = "Ton";
     taxas = todasTaxas[maquinaAtual];
     telaSelecaoMaquina.close();
+    mainContainer.className = "mainContainer";
     mudarEstilo();
 });
 

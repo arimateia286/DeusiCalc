@@ -16,6 +16,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(to right, #01ff5f, #ffb900);
 }
 
 .temaTon {
@@ -42,7 +43,7 @@ body {
     font-size: var(--tamanhoFonteTexto);
     border-bottom: 1px solid black;
     border-top: 1px solid black;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 0.5rem;
     align-content: center;
 }
@@ -69,7 +70,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 8vh;
+    height: 7vh;
 }
 
 .headerContainer {
@@ -93,12 +94,16 @@ body {
     overflow: hidden;
 }
 
+.invisivel {
+    display: none;
+}
+
 .widthContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 92.5%;
-    height: calc(100% - 8vh);
+    height: calc(100% - 7vh);
     margin: auto;
     gap: 8px;
 }
@@ -108,7 +113,9 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    margin: 1rem;
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 8px;
     gap: 8px;
 }
 
@@ -116,7 +123,7 @@ body {
     width: 40%;
     background-color: rgba(0, 0, 0, 0.125);
     border-radius: 8px;
-    padding: 1rem;
+    padding: 8px;
 }
 
 .containerMaquinas>div>img {
@@ -145,14 +152,13 @@ body {
     border: none;
     border-radius: 8px;
     color: white;
-    font-size: 32px;
+    font-size: 28px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-    text-overflow: ellipsis;
 }
 
 .botaoDigito {
     font-size: 64px;
-    aspect-ratio: 1;
+    aspect-ratio: 1.25;
 }
 
 .visor {
@@ -174,6 +180,11 @@ body {
 
 .sheIs {
     width: 50%;
+}
+
+#listaParcelamento {
+    max-height: 60vh;
+    overflow: auto;
 }
 
 #divDigitos {
@@ -208,7 +219,6 @@ body {
 
     .botaoDigito {
         font-size: 48px;
-        aspect-ratio: 1;
     }
 
     .visor,
