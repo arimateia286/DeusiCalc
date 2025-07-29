@@ -19,27 +19,43 @@ const avisosDiv = document.getElementById("avisosDiv");
 const telaSelecaoMaquina = document.getElementById("telaSelecaoMaquina");
 
 if (navigator.onLine) {
-    (async () => {
-        const taxasTemp = await axios.get("https://raw.githubusercontent.com/arimateia286/DeusiCalc/main/taxas.json");
-        todasTaxas = taxasTemp.data;
-        localStorage.setItem("taxasLocal", JSON.stringify(todasTaxas));
-        const dataFormatada = new Intl.DateTimeFormat('pt-BR', {
-            dateStyle: 'short',
-            timeStyle: 'medium'
-        }).format(data);
-        localStorage.setItem("dataTaxas", JSON.stringify(dataFormatada));
-    })();
-    todasTaxas = JSON.parse(localStorage.getItem("taxasLocal"));
-    telaSelecaoMaquina.showModal();
+    axios.get("https://arimateia286.github.io/DeusiCalc/taxas.json")
+        .then(response => {
+            todasTaxas = response.data;
+            localStorage.setItem("taxasLocal", JSON.stringify(todasTaxas));
+
+            const data = new Date();
+            const dataFormatada = new Intl.DateTimeFormat('pt-BR', {
+                dateStyle: 'short',
+                timeStyle: 'medium'
+            }).format(data);
+            localStorage.setItem("dataTaxas", JSON.stringify(dataFormatada));
+
+            telaSelecaoMaquina.showModal();
+        })
+        .catch(error => {
+            console.error("Erro ao baixar taxas:", error);
+
+            if (localStorage.getItem("taxasLocal") != null) {
+                avisosDiv.innerHTML = "<div class='textoPopup'>Erro ao atualizar as taxas, usando a versão salva em " +
+                    JSON.parse(localStorage.getItem("dataTaxas")) + "</div>";
+                todasTaxas = JSON.parse(localStorage.getItem("taxasLocal"));
+                telaSelecaoMaquina.showModal();
+                telaAviso.showModal();
+            } else {
+                avisosDiv.innerHTML = "<div class='textoPopup'>Não foi possível baixar a tabela de taxas e nenhuma versão está salva localmente.</div>";
+                telaAviso.showModal();
+            }
+        });
 } else {
     if (localStorage.getItem("taxasLocal") != null) {
-        avisosDiv.innerHTML = "<div class='textoPopup'>Você está offline, mas as taxas foram baixadas em " + JSON.parse(localStorage.getItem("dataTaxas")) + "</div>";
+        avisosDiv.innerHTML = "<div class='textoPopup'>Você está offline, mas as taxas foram baixadas em " +
+            JSON.parse(localStorage.getItem("dataTaxas")) + "</div>";
+        todasTaxas = JSON.parse(localStorage.getItem("taxasLocal"));
         telaSelecaoMaquina.showModal();
         telaAviso.showModal();
-        todasTaxas = JSON.parse(localStorage.getItem("taxasLocal"));
-    }
-    else {
-        avisosDiv.innerHTML = "<div class='textoPopup'>Você não tem a tabela de taxas baixada!\nConecte-se a internet para baixar a tabela mais recente e usar o aplicativo!</div>";
+    } else {
+        avisosDiv.innerHTML = "<div class='textoPopup'>Você não tem a tabela de taxas baixada!\nConecte-se à internet para baixar a tabela mais recente e usar o aplicativo!</div>";
         telaAviso.showModal();
     }
 }

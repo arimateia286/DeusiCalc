@@ -158,7 +158,7 @@ body {
 
 .botaoDigito {
     font-size: 64px;
-    aspect-ratio: 1.25;
+    height: 10vh;
 }
 
 .visor {
